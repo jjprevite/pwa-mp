@@ -9,11 +9,10 @@ var Schema = mongoose.Schema;
 var AppsSchema = new Schema({
     author: String,
     category: String,
-    date_added: Date,
+    dateAdded: Date,
     description: String,
     icon: String,
-    image: String,
-    link: String,
+    link: String
 });
 
 //export our module to use in server.js
