@@ -64,7 +64,11 @@ class CommentBox extends Component {
     render() {
         return (
             <div style={style.commentBox}>
-                <h2 style={style.title}>Comments:</h2>
+                <h2 style={style.title}>Web App Store</h2>
+                <p style={style.tagLine}>The only marketplace for progressive web apps</p>
+                <form style={style.searchForm}>
+                    <input style={style.searchField} type="search"/>
+                </form>
                 <CommentList
                     onCommentDelete={this.handleCommentDelete}
                     onCommentUpdate={this.handleCommentUpdate}

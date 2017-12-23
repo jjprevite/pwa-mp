@@ -7,7 +7,19 @@ const style = {
     },
     title: {
         textAlign: 'center',
-        textTransform: 'uppercase'
+    },
+    tagLine: {
+        textAlign: 'center'
+    },
+    searchForm: {
+        display: 'flex',
+        marginBottom: '25px'
+    },
+    searchField: {
+        border: '1px solid gray',
+        borderRadius: '15px',
+        marginLeft: 'auto',
+        marginRight: 'auto'
     },
     commentList: {
         border: '1px solid #f1f1f1',
