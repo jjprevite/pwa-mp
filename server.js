@@ -58,7 +58,11 @@ router.route('/apps')
         var app = new App();
         //body parser lets us use the req.body
         app.author = req.body.author;
-        app.text = req.body.text;
+        app.category = req.body.category;
+        app.dateAdded = req.body.dateAdded;
+        app.description = req.body.description;
+        app.icon = req.body.icon;
+        app.link = req.body.link;
 
         app.save(function (err) {
             if (err)
