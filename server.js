@@ -14,7 +14,7 @@ var router = express.Router();
 //set our port to either a predetermined port number if you have set it up, or 3001
 var port = process.env.API_PORT || 3001;
 
-//db config -- REPLACE USERNAME/PASSWORD/DATABASE WITH YOUR OWN FROM MLAB!
+//db config
 var mongoDB = 'mongodb://joe:F^e49s#G@ds163796.mlab.com:63796/web-app-store';
 mongoose.connect(mongoDB, { useMongoClient: true })
 var db = mongoose.connection;
@@ -37,10 +37,6 @@ app.use(function (req, res, next) {
 });
 
 //now  we can set the route path & initialize the API
-router.get('/', function (req, res) {
-    res.json({ message: 'API Initialized!' });
-});
-
 router.get('/', function (req, res) {
     res.json({ message: 'API Initialized!' });
 });
