@@ -5,21 +5,21 @@ import style from './style';
 
 class AppList extends Component {
     render() {
-        let commentNodes = this.props.data.map(comment => {
+        let appNodes = this.props.data.map(app => {
             return (
                 <App
-                    author={comment.author}
-                    uniqueID={comment['_id']}
+                    author={app.author}
+                    uniqueID={app['_id']}
                     onAppDelete={this.props.onAppDelete}
                     onAppUpdate={this.props.onAppUpdate}
-                    key={comment['_id']}>
-                    {comment.description}
+                    key={app['_id']}>
+                    {app.description}
                 </App>
             )
         })
         return (
             <div style={style.commentList}>
-                {commentNodes}
+                {appNodes}
             </div>
         )
     }
