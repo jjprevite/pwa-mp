@@ -5,7 +5,7 @@ import AppBox from './AppBox';
 
 ReactDOM.render(
     <AppBox
-        url='http://localhost:3001/api/comments'
+        url='http://localhost:3001/api/apps'
         pollInterval={2000} />,
     document.getElementById('root')
 );
