@@ -81,7 +81,11 @@ router.route('/apps/:app_id')
             //setting the new author and text to whatever was changed. If nothing was changed
             // we will not alter the field.
             (req.body.author) ? app.author = req.body.author : null;
-            (req.body.text) ? app.text = req.body.text : null;
+            (req.body.category) ? app.category = req.body.category : null;
+            (req.body.dateAdded) ? app.dateAdded = req.body.dateAdded : null;
+            (req.body.description) ? app.description = req.body.description : null;
+            (req.body.icon) ? app.icon = req.body.icon : null;
+            (req.body.link) ? app.link = req.body.link : null;
             //save app
             app.save(function (err) {
                 if (err)
