@@ -41,7 +41,7 @@ class AppBox extends Component {
             });
     }
     handleAppUpdate(id, comment) {
-        //sends the comment id and new author/text to our api
+        //sends the comment id and new author/description to our api
         axios.put(`${this.props.url}/${id}`, comment)
             .catch(err => {
                 console.log(err);
