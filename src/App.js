@@ -9,13 +9,13 @@ class App extends Component {
         this.state = {
             toBeUpdated: false,
             author: '',
-            text: ''
+            description: ''
         };
         //binding all our functions to this class
         this.deleteApp = this.deleteApp.bind(this);
         this.updateApp = this.updateApp.bind(this);
         this.handleAuthorChange = this.handleAuthorChange.bind(this);
-        this.handleTextChange = this.handleTextChange.bind(this);
+        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleAppUpdate = this.handleAppUpdate.bind(this);
     }
     updateApp(e) {
@@ -26,16 +26,16 @@ class App extends Component {
     handleAppUpdate(e) {
         e.preventDefault();
         let id = this.props.uniqueID;
-        //if author or text changed, set it. if not, leave null and our PUT request
+        //if author or description changed, set it. if not, leave null and our PUT request
         //will ignore it.
         let author = (this.state.author) ? this.state.author : null;
-        let text = (this.state.text) ? this.state.text : null;
-        let comment = { author: author, text: text };
-        this.props.onAppUpdate(id, comment);
+        let description = (this.state.description) ? this.state.description : null;
+        let app = { author: author, description: description };
+        this.props.onAppUpdate(id, app);
         this.setState({
             toBeUpdated: !this.state.toBeUpdated,
             author: '',
-            text: ''
+            description: ''
         })
     }
     deleteApp(e) {
@@ -44,8 +44,8 @@ class App extends Component {
         this.props.onAppDelete(id);
         console.log('oops deleted');
     }
-    handleTextChange(e) {
-        this.setState({ text: e.target.value });
+    handleDescriptionChange(e) {
+        this.setState({ description: e.target.value });
     }
     handleAuthorChange(e) {
         this.setState({ author: e.target.value });
@@ -72,9 +72,9 @@ class App extends Component {
                         <input
                             type='text'
                             placeholder='Update your comment...'
-                            style={style.commentFormText}
-                            value={this.state.text}
-                            onChange={this.handleTextChange} />
+                            style={style.commentFormDescription}
+                            value={this.state.description}
+                            onChange={this.handleDescriptionChange} />
                         <input
                             type='submit'
                             style={style.commentFormPost}
