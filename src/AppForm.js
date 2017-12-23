@@ -1,8 +1,8 @@
-//CommentForm.js
+//AppForm.js
 import React, { Component } from 'react';
 import style from './style';
 
-class CommentForm extends Component {
+class AppForm extends Component {
     constructor(props) {
         super(props);
         this.state = { author: '', text: '' };
@@ -23,7 +23,7 @@ class CommentForm extends Component {
         if (!text || !author) {
             return;
         }
-        this.props.onCommentSubmit({ author: author, text: text });
+        this.props.onAppSubmit({ author: author, text: text });
         this.setState({ author: '', text: '' });
     }
     render() {
@@ -50,4 +50,4 @@ class CommentForm extends Component {
     }
 }
 
-export default CommentForm;
+export default AppForm;
