@@ -1,9 +1,9 @@
-//Comment.js
+//App.js
 import React, { Component } from 'react';
 import style from './style';
 import marked from 'marked';
 
-class Comment extends Component {
+class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,18 +12,18 @@ class Comment extends Component {
             text: ''
         };
         //binding all our functions to this class
-        this.deleteComment = this.deleteComment.bind(this);
-        this.updateComment = this.updateComment.bind(this);
+        this.deleteApp = this.deleteApp.bind(this);
+        this.updateApp = this.updateApp.bind(this);
         this.handleAuthorChange = this.handleAuthorChange.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
-        this.handleCommentUpdate = this.handleCommentUpdate.bind(this);
+        this.handleAppUpdate = this.handleAppUpdate.bind(this);
     }
-    updateComment(e) {
+    updateApp(e) {
         e.preventDefault();
         //brings up the update field when we click on the update link.
         this.setState({ toBeUpdated: !this.state.toBeUpdated });
     }
-    handleCommentUpdate(e) {
+    handleAppUpdate(e) {
         e.preventDefault();
         let id = this.props.uniqueID;
         //if author or text changed, set it. if not, leave null and our PUT request
@@ -31,17 +31,17 @@ class Comment extends Component {
         let author = (this.state.author) ? this.state.author : null;
         let text = (this.state.text) ? this.state.text : null;
         let comment = { author: author, text: text };
-        this.props.onCommentUpdate(id, comment);
+        this.props.onAppUpdate(id, comment);
         this.setState({
             toBeUpdated: !this.state.toBeUpdated,
             author: '',
             text: ''
         })
     }
-    deleteComment(e) {
+    deleteApp(e) {
         e.preventDefault();
         let id = this.props.uniqueID;
-        this.props.onCommentDelete(id);
+        this.props.onAppDelete(id);
         console.log('oops deleted');
     }
     handleTextChange(e) {
@@ -59,10 +59,10 @@ class Comment extends Component {
             <div style={style.comment}>
                 <h3>{this.props.author}</h3>
                 <span dangerouslySetInnerHTML={this.rawMarkup()} />
-                <a style={style.updateLink} href='#' onClick={this.updateComment}>update</a>
-                <a style={style.deleteLink} href='#' onClick={this.deleteComment}>delete</a>
+                <a style={style.updateLink} href='#' onClick={this.updateApp}>update</a>
+                <a style={style.deleteLink} href='#' onClick={this.deleteApp}>delete</a>
                 {(this.state.toBeUpdated)
-                    ? (<form onSubmit={this.handleCommentUpdate}>
+                    ? (<form onSubmit={this.handleAppUpdate}>
                         <input
                             type='text'
                             placeholder='Update name...'
@@ -86,4 +86,4 @@ class Comment extends Component {
     }
 }
 
-export default Comment;
+export default App;
