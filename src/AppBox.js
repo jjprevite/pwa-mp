@@ -20,15 +20,15 @@ class AppBox extends Component {
                 this.setState({ data: res.data });
             })
     }
-    handleAppSubmit(comment) {
-        let comments = this.state.data;
-        comment.id = Date.now();
-        let newApps = comments.concat([comment]);
+    handleAppSubmit(app) {
+        let apps = this.state.data;
+        app.id = Date.now();
+        let newApps = apps.concat([app]);
         this.setState({ data: newApps });
-        axios.post(this.props.url, comment)
+        axios.post(this.props.url, app)
             .catch(err => {
                 console.error(err);
-                this.setState({ data: comments });
+                this.setState({ data: apps });
             });
     }
     handleAppDelete(id) {
@@ -40,9 +40,9 @@ class AppBox extends Component {
                 console.error(err);
             });
     }
-    handleAppUpdate(id, comment) {
-        //sends the comment id and new author/description to our api
-        axios.put(`${this.props.url}/${id}`, comment)
+    handleAppUpdate(id, app) {
+        //sends the app id and new author/description to our api
+        axios.put(`${this.props.url}/${id}`, app)
             .catch(err => {
                 console.log(err);
             })
