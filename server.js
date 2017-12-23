@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
 
-    //and remove cacheing so we get the most recent comments
+    //and remove cacheing so we get the most recent apps
     res.setHeader('Cache-Control', 'no-cache');
     next();
 });
@@ -41,55 +41,55 @@ router.get('/', function (req, res) {
     res.json({ message: 'API Initialized!' });
 });
 
-//adding the /comments route to our /api router
-router.route('/comments')
-    //retrieve all comments from the database
+//adding the /apps route to our /api router
+router.route('/apps')
+    //retrieve all apps from the database
     .get(function (req, res) {
         //looks at our App Schema
-        App.find(function (err, comments) {
+        App.find(function (err, apps) {
             if (err)
                 res.send(err);
-            //responds with a json object of our database comments.
-            res.json(comments)
+            //responds with a json object of our database apps.
+            res.json(apps)
         });
     })
-    //post new comment to the database
+    //post new app to the database
     .post(function (req, res) {
-        var comment = new App();
+        var app = new App();
         //body parser lets us use the req.body
-        comment.author = req.body.author;
-        comment.text = req.body.text;
+        app.author = req.body.author;
+        app.text = req.body.text;
 
-        comment.save(function (err) {
+        app.save(function (err) {
             if (err)
                 res.send(err);
             res.json({ message: 'App successfully added!' });
         });
     });
 
-//Adding a route to a specific comment based on the database ID
-router.route('/comments/:comment_id')
-    //The put method gives us the chance to update our comment based on the ID passed to the route
+//Adding a route to a specific app based on the database ID
+router.route('/apps/:app_id')
+    //The put method gives us the chance to update our app based on the ID passed to the route
     .put(function (req, res) {
-        App.findById(req.params.comment_id, function (err, comment) {
+        App.findById(req.params.app_id, function (err, app) {
             if (err)
                 res.send(err);
             //setting the new author and text to whatever was changed. If nothing was changed
             // we will not alter the field.
-            (req.body.author) ? comment.author = req.body.author : null;
-            (req.body.text) ? comment.text = req.body.text : null;
-            //save comment
-            comment.save(function (err) {
+            (req.body.author) ? app.author = req.body.author : null;
+            (req.body.text) ? app.text = req.body.text : null;
+            //save app
+            app.save(function (err) {
                 if (err)
                     res.send(err);
                 res.json({ message: 'App has been updated' });
             });
         });
     })
-    //delete method for removing a comment from our database
+    //delete method for removing a app from our database
     .delete(function (req, res) {
-        //selects the comment by its ID, then removes it.
-        App.remove({ _id: req.params.comment_id }, function (err, comment) {
+        //selects the app by its ID, then removes it.
+        App.remove({ _id: req.params.app_id }, function (err, app) {
             if (err)
                 res.send(err);
             res.json({ message: 'App has been deleted' })
