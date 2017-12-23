@@ -5,26 +5,26 @@ import style from './style';
 class AppForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { author: '', text: '' };
+        this.state = { author: '', description: '' };
         this.handleAuthorChange = this.handleAuthorChange.bind(this);
-        this.handleTextChange = this.handleTextChange.bind(this);
+        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleAuthorChange(e) {
         this.setState({ author: e.target.value });
     }
-    handleTextChange(e) {
-        this.setState({ text: e.target.value });
+    handleDescriptionChange(e) {
+        this.setState({ description: e.target.value });
     }
     handleSubmit(e) {
         e.preventDefault();
         let author = this.state.author.trim();
-        let text = this.state.text.trim();
-        if (!text || !author) {
+        let description = this.state.description.trim();
+        if (!description || !author) {
             return;
         }
-        this.props.onAppSubmit({ author: author, text: text });
-        this.setState({ author: '', text: '' });
+        this.props.onAppSubmit({ author: author, description: description });
+        this.setState({ author: '', description: '' });
     }
     render() {
         return (
@@ -38,9 +38,9 @@ class AppForm extends Component {
                 <input
                     type='text'
                     placeholder='Say something...'
-                    style={style.commentFormText}
-                    value={this.state.text}
-                    onChange={this.handleTextChange} />
+                    style={style.commentFormDescription}
+                    value={this.state.description}
+                    onChange={this.handleDescriptionChange} />
                 <input
                     type='submit'
                     style={style.commentFormPost}

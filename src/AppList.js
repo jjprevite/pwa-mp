@@ -13,7 +13,7 @@ class AppList extends Component {
                     onAppDelete={this.props.onAppDelete}
                     onAppUpdate={this.props.onAppUpdate}
                     key={comment['_id']}>
-                    {comment.text}
+                    {comment.description}
                 </App>
             )
         })
