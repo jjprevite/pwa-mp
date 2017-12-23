@@ -5,7 +5,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var Comment = require('./model/comments');
+var App = require('./model/apps');
 
 //and create our instances
 var app = express();
@@ -45,8 +45,8 @@ router.get('/', function (req, res) {
 router.route('/comments')
     //retrieve all comments from the database
     .get(function (req, res) {
-        //looks at our Comment Schema
-        Comment.find(function (err, comments) {
+        //looks at our App Schema
+        App.find(function (err, comments) {
             if (err)
                 res.send(err);
             //responds with a json object of our database comments.
@@ -55,7 +55,7 @@ router.route('/comments')
     })
     //post new comment to the database
     .post(function (req, res) {
-        var comment = new Comment();
+        var comment = new App();
         //body parser lets us use the req.body
         comment.author = req.body.author;
         comment.text = req.body.text;
@@ -63,7 +63,7 @@ router.route('/comments')
         comment.save(function (err) {
             if (err)
                 res.send(err);
-            res.json({ message: 'Comment successfully added!' });
+            res.json({ message: 'App successfully added!' });
         });
     });
 
@@ -71,7 +71,7 @@ router.route('/comments')
 router.route('/comments/:comment_id')
     //The put method gives us the chance to update our comment based on the ID passed to the route
     .put(function (req, res) {
-        Comment.findById(req.params.comment_id, function (err, comment) {
+        App.findById(req.params.comment_id, function (err, comment) {
             if (err)
                 res.send(err);
             //setting the new author and text to whatever was changed. If nothing was changed
@@ -82,17 +82,17 @@ router.route('/comments/:comment_id')
             comment.save(function (err) {
                 if (err)
                     res.send(err);
-                res.json({ message: 'Comment has been updated' });
+                res.json({ message: 'App has been updated' });
             });
         });
     })
     //delete method for removing a comment from our database
     .delete(function (req, res) {
         //selects the comment by its ID, then removes it.
-        Comment.remove({ _id: req.params.comment_id }, function (err, comment) {
+        App.remove({ _id: req.params.comment_id }, function (err, comment) {
             if (err)
                 res.send(err);
-            res.json({ message: 'Comment has been deleted' })
+            res.json({ message: 'App has been deleted' })
         })
     });    
 
