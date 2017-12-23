@@ -1,20 +1,20 @@
-//CommentList.js
+//AppList.js
 import React, { Component } from 'react';
-import Comment from './Comment';
+import App from './App';
 import style from './style';
 
-class CommentList extends Component {
+class AppList extends Component {
     render() {
         let commentNodes = this.props.data.map(comment => {
             return (
-                <Comment
+                <App
                     author={comment.author}
                     uniqueID={comment['_id']}
-                    onCommentDelete={this.props.onCommentDelete}
-                    onCommentUpdate={this.props.onCommentUpdate}
+                    onAppDelete={this.props.onAppDelete}
+                    onAppUpdate={this.props.onAppUpdate}
                     key={comment['_id']}>
                     {comment.text}
-                </Comment>
+                </App>
             )
         })
         return (
@@ -25,4 +25,4 @@ class CommentList extends Component {
     }
 }
 
-export default CommentList;
+export default AppList;
