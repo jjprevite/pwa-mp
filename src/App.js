@@ -9,8 +9,13 @@ class App extends Component {
         this.state = {
             toBeUpdated: false,
             author: '',
-            description: ''
+            category: '',
+            dateAdded: '',
+            description: '',
+            icon: '',
+            link: ''
         };
+        console.log(this.props.category);
         //binding all our functions to this class
         this.deleteApp = this.deleteApp.bind(this);
         this.updateApp = this.updateApp.bind(this);
