@@ -13,7 +13,8 @@ class App extends Component {
             dateAdded: '',
             description: '',
             icon: '',
-            link: ''
+            link: '',
+            name: ''
         };
         console.log(this.props.category);
         //binding all our functions to this class
