@@ -12,7 +12,8 @@ var AppsSchema = new Schema({
     dateAdded: Date,
     description: String,
     icon: String,
-    link: String
+    link: String,
+    name: String
 });
 
 //export our module to use in server.js
