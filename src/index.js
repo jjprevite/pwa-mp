@@ -1,11 +1,12 @@
 //index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppBox from './AppBox';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Root from './Root';
 
 ReactDOM.render(
-    <AppBox
-        url='http://localhost:3001/api/apps'
-        pollInterval={2000} />,
+    <Router>
+        <Root/>
+    </Router>,
     document.getElementById('root')
 );
