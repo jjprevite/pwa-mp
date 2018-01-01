@@ -39,7 +39,7 @@ class AppForm extends Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        this.props.history.push('/');
+        // this.props.history.push('/');
         let author = this.state.author.trim();
         let category = this.state.category.trim();
         // let dateAdded = this.state.dateAdded.trim();
@@ -55,7 +55,6 @@ class AppForm extends Component {
         //removed dateAdded in two lines below
         this.props.onAppSubmit({ author: author, category: category, description: description, icon: icon, link: link, name: name });
         this.setState({ author: '', category: '', description: '', icon: '', link: '', name: '' });
-        console.log('Hello world from butt');
     }
     render() {
         return (
