@@ -1,11 +1,11 @@
 //server.js
 'use strict'
 
-//first we import our dependencies...
+//import dependencies
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var App = require('./model/apps');
+var App = require('./model/apps');;
 
 //and create our instances
 var app = express();
@@ -55,36 +55,19 @@ router.route('/apps')
     })
     //post new app to the database
     .post(function (req, res) {
-        var app = new App();
+        var pwapp = new App();
         //body parser lets us use the req.body
-        app.author = req.body.author;
-        app.category = req.body.category;
-        app.dateAdded = req.body.dateAdded;
-        app.description = req.body.description;
-        app.icon = req.body.icon;
-        app.link = req.body.link;
+        (req.body.author) ? pwapp.author = req.body.author : null;
+        (req.body.category) ? pwapp.category = req.body.category : null;
+        // (req.body.dateAdded) ? pwapp.dateAdded = req.body.dateAdded : null;
+        (req.body.description) ?pwapp.description = req.body.description : null;
+        (req.body.icon) ?pwapp.icon = req.body.icon : null;
+        (req.body.link) ?pwapp.link = req.body.link : null;
+        (req.body.name) ?pwapp.name = req.body.name : null;
 
-        app.save(function (err) {
-            if (err)
-                res.send(err);
-            res.json({ message: 'App successfully added!' });
-        });
-    });
-
-//adding the /form route to our /api router
-router.route('/form')
-    //post new app to the database
-    .post(function (req, res) {
-        var app = new App();
-        //body parser lets us use the req.body
-        app.author = req.body.author;
-        app.category = req.body.category;
-        app.dateAdded = req.body.dateAdded;
-        app.description = req.body.description;
-        app.icon = req.body.icon;
-        app.link = req.body.link;
-
-        app.save(function (err) {
+        console.log('author: ' + pwapp.author + ' name: ' + pwapp.name);
+        console.log(req.body.author);
+        pwapp.save(function (err) {
             if (err)
                 res.send(err);
             res.json({ message: 'App successfully added!' });
@@ -92,22 +75,22 @@ router.route('/form')
     });
 
 //Adding a route to a specific app based on the database ID
-router.route('/apps/:app_id')
+router.route('/:app_id')
     //The put method gives us the chance to update our app based on the ID passed to the route
     .put(function (req, res) {
-        App.findById(req.params.app_id, function (err, app) {
+        App.findById(req.params.app_id, function (err, pwapp) {
             if (err)
                 res.send(err);
             //setting the new author and text to whatever was changed. If nothing was changed
             // we will not alter the field.
-            (req.body.author) ? app.author = req.body.author : null;
-            (req.body.category) ? app.category = req.body.category : null;
-            (req.body.dateAdded) ? app.dateAdded = req.body.dateAdded : null;
-            (req.body.description) ? app.description = req.body.description : null;
-            (req.body.icon) ? app.icon = req.body.icon : null;
-            (req.body.link) ? app.link = req.body.link : null;
-            //save app
-            app.save(function (err) {
+            (req.body.author) ? pwapp.author = req.body.author : null;
+            (req.body.category) ? pwapp.category = req.body.category : null;
+            // (req.body.dateAdded) ? pwapp.dateAdded = req.body.dateAdded : null;
+            (req.body.description) ? pwapp.description = req.body.description : null;
+            (req.body.icon) ? pwapp.icon = req.body.icon : null;
+            (req.body.link) ? pwapp.link = req.body.link : null;
+            //save pwapp
+            pwapp.save(function (err) {
                 if (err)
                     res.send(err);
                 res.json({ message: 'App has been updated' });
