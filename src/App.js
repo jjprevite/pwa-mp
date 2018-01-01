@@ -71,7 +71,7 @@ class App extends Component {
                     ? (<form onSubmit={this.handleAppUpdate}>
                         <input
                             type='text'
-                            placeholder='Update name...'
+                            placeholder='Update author...'
                             style={style.commentFormAuthor}
                             value={this.state.author}
                             onChange={this.handleAuthorChange} />
