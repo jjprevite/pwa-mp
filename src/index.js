@@ -6,9 +6,11 @@ import AppBox from './AppBox';
 
 ReactDOM.render(
     <Router>
-    <AppBox
-        url='http://localhost:3001/api/apps'
-        pollInterval={2000} />
+        <main>  
+            <AppBox
+                url='http://localhost:3001/api/apps'
+                pollInterval={2000} />
+        </main>
     </Router>,
     document.getElementById('root')
 );
