@@ -14,6 +14,7 @@ export default function App(props) {
                     />
                 )}/>
                 <Route exact path ="/form" component={AppForm} />
+                <Route path="/apps/:app_id" component={AppForm} />
             </main>
         </Router>
     );
