@@ -69,6 +69,7 @@ class AppBox extends Component {
                 <form style={style.searchForm}>
                     <input style={style.searchField} type="search"/>
                 </form>
+                <p style={style.tagLine}>Want to add your app?</p>
                 <AppList
                     onAppDelete={this.handleAppDelete}
                     onAppUpdate={this.handleAppUpdate}
