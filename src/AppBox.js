@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Link } from 'react-router-dom';
 import axios from 'axios';
 import AppList from './AppList';
 import AppForm from './AppForm';
@@ -69,7 +70,7 @@ class AppBox extends Component {
                 <form style={style.searchForm}>
                     <input style={style.searchField} type="search"/>
                 </form>
-                <p style={style.tagLine}>Want to add your app?</p>
+                <p style={style.tagLine}><a href="/form">Want to add your app?</a></p>
                 <AppList
                     onAppDelete={this.handleAppDelete}
                     onAppUpdate={this.handleAppUpdate}
