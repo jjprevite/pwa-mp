@@ -9,7 +9,6 @@ class AppBox extends Component {
         super(props);
         this.state = { data: [] };
         this.loadAppsFromServer = this.loadAppsFromServer.bind(this);
-        this.handleAppSubmit = this.handleAppSubmit.bind(this);
         this.handleAppDelete = this.handleAppDelete.bind(this);
         this.handleAppUpdate = this.handleAppUpdate.bind(this);
         this.pollInterval = null;
