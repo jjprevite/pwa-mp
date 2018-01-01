@@ -71,6 +71,26 @@ router.route('/apps')
         });
     });
 
+//adding the /form route to our /api router
+router.route('/form')
+    //post new app to the database
+    .post(function (req, res) {
+        var app = new App();
+        //body parser lets us use the req.body
+        app.author = req.body.author;
+        app.category = req.body.category;
+        app.dateAdded = req.body.dateAdded;
+        app.description = req.body.description;
+        app.icon = req.body.icon;
+        app.link = req.body.link;
+
+        app.save(function (err) {
+            if (err)
+                res.send(err);
+            res.json({ message: 'App successfully added!' });
+        });
+    });
+
 //Adding a route to a specific app based on the database ID
 router.route('/apps/:app_id')
     //The put method gives us the chance to update our app based on the ID passed to the route
