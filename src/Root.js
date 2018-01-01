@@ -36,9 +36,11 @@ class Root extends Component {
                             pollInterval={2000}
                         />
                     )}/>
-                    <Route exact path ="/form" component={AppForm} />
+                    <Route exact path ="/form" render={() => (
+                        <AppForm url='http://localhost:3001/api/apps' onAppSubmit={this.handleAppSubmit} />
+                    )} />
                     <Route path="/apps/:app_id" render={() => (
-                        <AppForm onAppSubmit={this.handleAppSubmit} />
+                        <AppForm/>
                     )} />
                 </main>
             </Router>
