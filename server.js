@@ -36,6 +36,14 @@ app.use(function (req, res, next) {
     next();
 });
 
+//Use our router configuration when we call /api
+app.use('/api', router);
+
+//starts the server and listens for requests
+app.listen(port, function () {
+    console.log(`api running on port ${port}`);
+});
+
 //now  we can set the route path & initialize the API
 router.get('/', function (req, res) {
     res.json({ message: 'API Initialized!' });
@@ -66,7 +74,6 @@ router.route('/apps')
         (req.body.name) ?pwapp.name = req.body.name : null;
 
         console.log('author: ' + pwapp.author + ' name: ' + pwapp.name);
-        console.log(req.body.author);
         pwapp.save(function (err) {
             if (err)
                 res.send(err);
@@ -107,10 +114,3 @@ router.route('/:app_id')
         })
     });    
 
-//Use our router configuration when we call /api
-app.use('/api', router);
-
-//starts the server and listens for requests
-app.listen(port, function () {
-    console.log(`api running on port ${port}`);
-});
