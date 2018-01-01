@@ -39,7 +39,6 @@ class AppForm extends Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        // this.props.history.push('/');
         let author = this.state.author.trim();
         let category = this.state.category.trim();
         // let dateAdded = this.state.dateAdded.trim();
