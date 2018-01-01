@@ -4,9 +4,9 @@ import { BrowserRouter as Redirect } from 'react-router-dom';
 import style from './style';
 
 class AppForm extends Component {
-    constructor(props) {
+    constructor(props) {    
         super(props);
-        this.state = { author: '', category: '', dateAdded: '', description: '', icon: '', link: '', name: '' };
+        this.state = { author: '', category: '', dateAdded: '', description: '', icon: '', link: '', name: '', fireRedirect: false };
         this.handleAuthorChange = this.handleAuthorChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
         // this.handleDateAddedChange = this.handleDateAddedChange.bind(this);
@@ -52,11 +52,13 @@ class AppForm extends Component {
         // }
         //commented out above because it was breaking app
         //removed dateAdded in two lines below
-        this.props.onAppSubmit({ author: author, category: category, description: description, icon: icon, link: link, name: name });
-        this.setState({ author: '', category: '', description: '', icon: '', link: '', name: '' });
+        this.props.onAppSubmit({ author: author, category: category, description: description, icon: icon, link: link, name: name });   
+        this.setState({ author: '', category: '', description: '', icon: '', link: '', name: '', fireRedirect: true });
     }
     render() {
+        const fireRedirect = this.state;
         return (
+            <div>
             <form style={style.commentForm} onSubmit={this.handleSubmit}>
                 <input
                     type='text'
@@ -103,6 +105,10 @@ class AppForm extends Component {
                     style={style.commentFormPost}
                     value='Post' />
             </form>
+            {fireRedirect && (
+                <Redirect to={'/'}/>
+            )}
+            </div>
         )
     }
 }
