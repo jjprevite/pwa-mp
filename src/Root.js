@@ -5,14 +5,16 @@ import AppForm from './AppForm';
 
 export default function App(props) {
     return (
-        <main>
-            <Route exact path="/" render={() => (
-                <AppBox
-                    url='http://localhost:3001/api/apps'
-                    pollInterval={2000}
-                />
-            )}/>
-            <Route exact path ="/form" component={AppForm} />
-        </main>
+        <Router>
+            <main>
+                <Route exact path="/" render={() => (
+                    <AppBox
+                        url='http://localhost:3001/api/apps'
+                        pollInterval={2000}
+                    />
+                )}/>
+                <Route exact path ="/form" component={AppForm} />
+            </main>
+        </Router>
     );
 }
