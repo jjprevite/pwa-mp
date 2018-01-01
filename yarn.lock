@@ -4196,7 +4196,11 @@ map-stream@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/map-stream/-/map-stream-0.1.0.tgz#e56aa94c4c8055a16404a0674b78f215f7c8e194"
 
+<<<<<<< HEAD
 marked@^0.3.9:
+=======
+marked@^0.3.7:
+>>>>>>> 499d3ebf60d4bb9a381b4fb4ae9be34661feda54
   version "0.3.9"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.9.tgz#54ce6a57e720c3ac6098374ec625fcbcc97ff290"
 
@@ -4359,7 +4363,11 @@ mongodb@2.2.33:
     mongodb-core "2.1.17"
     readable-stream "2.2.7"
 
+<<<<<<< HEAD
 mongoose@^4.13.8:
+=======
+mongoose@^4.13.7:
+>>>>>>> 499d3ebf60d4bb9a381b4fb4ae9be34661feda54
   version "4.13.8"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-4.13.8.tgz#73af796be55fdfaf3d2622f8fa699f4a19bc84b4"
   dependencies:
@@ -4517,7 +4525,11 @@ node-status-codes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/node-status-codes/-/node-status-codes-1.0.0.tgz#5ae5541d024645d32a58fcddc9ceecea7ae3ac2f"
 
+<<<<<<< HEAD
 nodemon@^1.14.7:
+=======
+nodemon@^1.13.3:
+>>>>>>> 499d3ebf60d4bb9a381b4fb4ae9be34661feda54
   version "1.14.7"
   resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.14.7.tgz#ef544baa64603155c2ee6dcfba9204a2cd46d355"
   dependencies:
