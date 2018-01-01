@@ -20,17 +20,6 @@ class AppBox extends Component {
                 this.setState({ data: res.data });
             })
     }
-    handleAppSubmit(app) {
-        let apps = this.state.data;
-        app.id = Date.now();
-        let newApps = apps.concat([app]);
-        this.setState({ data: newApps });
-        axios.post(this.props.url, app)
-            .catch(err => {
-                console.error(err);
-                this.setState({ data: apps });
-            });
-    }
     handleAppDelete(id) {
         axios.delete(`${this.props.url}/${id}`)
             .then(res => {
@@ -74,7 +63,6 @@ class AppBox extends Component {
                     onAppDelete={this.handleAppDelete}
                     onAppUpdate={this.handleAppUpdate}
                     data={this.state.data} />
-                <AppForm onAppSubmit={this.handleAppSubmit} />
             </div>
         )
     }
