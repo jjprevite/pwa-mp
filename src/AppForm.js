@@ -1,5 +1,6 @@
 //AppForm.js
 import React, { Component } from 'react';
+import { BrowserRouter as Redirect } from 'react-router-dom';
 import style from './style';
 
 class AppForm extends Component {
@@ -38,6 +39,7 @@ class AppForm extends Component {
     }
     handleSubmit(e) {
         e.preventDefault();
+        this.props.history.push('/');
         let author = this.state.author.trim();
         let category = this.state.category.trim();
         // let dateAdded = this.state.dateAdded.trim();
