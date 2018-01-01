@@ -16,7 +16,7 @@ class Root extends Component {
         app.id = Date.now();
         let newApps = apps.concat([app]);
         this.setState({ data: newApps });
-        axios.post(this.props.url, app)
+        axios.post('http://localhost:3001/api/apps', app)
             .catch(err => {
                 console.error(err);
                 this.setState({ data: apps });
@@ -37,7 +37,7 @@ class Root extends Component {
                         />
                     )}/>
                     <Route exact path ="/form" render={() => (
-                        <AppForm url='http://localhost:3001/api/apps' onAppSubmit={this.handleAppSubmit} />
+                        <AppForm onAppSubmit={this.handleAppSubmit} />
                     )} />
                     <Route path="/apps/:app_id" render={() => (
                         <AppForm/>
