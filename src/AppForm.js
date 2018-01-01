@@ -48,12 +48,14 @@ class AppForm extends Component {
         let link = this.state.link.trim();
         let name = this.state.name.trim();
         // removed !dateAdded in line below
-        if (!author || !category || !description || !icon || !link || !name) {
-            return;
-        }
+        // if (!author || !category || !description || !icon || !link || !name) {
+        //     return;
+        // }
+        //commented out above because it was breaking app
         //removed dateAdded in two lines below
         this.props.onAppSubmit({ author: author, category: category, description: description, icon: icon, link: link, name: name });
         this.setState({ author: '', category: '', description: '', icon: '', link: '', name: '' });
+        console.log('Hello world from butt');
     }
     render() {
         return (
