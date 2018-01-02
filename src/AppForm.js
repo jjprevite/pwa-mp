@@ -57,8 +57,11 @@ class AppForm extends Component {
     }
     render() {
         const fireRedirect = this.state;
+        
+        if (fireRedirect === true) {
+            return <Redirect to="/" />
+        }
         return (
-            <div>
             <form style={style.commentForm} onSubmit={this.handleSubmit}>
                 <input
                     type='text'
@@ -105,10 +108,6 @@ class AppForm extends Component {
                     style={style.commentFormPost}
                     value='Post' />
             </form>
-            {fireRedirect && (
-                <Redirect to={'/'}/>
-            )}
-            </div>
         )
     }
 }
