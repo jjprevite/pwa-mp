@@ -82,7 +82,7 @@ router.route('/apps')
     });
 
 //Adding a route to a specific app based on the database ID
-router.route('/:app_id')
+router.route('/apps/:app_id')
     //The put method gives us the chance to update our app based on the ID passed to the route
     .put(function (req, res) {
         App.findById(req.params.app_id, function (err, pwapp) {
