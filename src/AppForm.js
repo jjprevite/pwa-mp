@@ -56,10 +56,13 @@ class AppForm extends Component {
         this.setState({ author: '', category: '', description: '', icon: '', link: '', name: '', fireRedirect: true });
     }
     render() {
-        const fireRedirect = this.state;
-        
-        if (fireRedirect === true) {
-            return <Redirect to="/" />
+        const { from } = "/";
+        const { fireRedirect } = this.state;
+
+        if (fireRedirect) {
+            return (
+                <Redirect to={from}/>
+            )
         }
         return (
             <form style={style.commentForm} onSubmit={this.handleSubmit}>
