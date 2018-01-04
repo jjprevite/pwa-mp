@@ -8,7 +8,7 @@ class AppList extends Component {
         let appNodes = this.props.data.map(app => {
             return (
                 <App
-                    author={app.author}
+                    name={app.name}
                     uniqueID={app['_id']}
                     onAppDelete={this.props.onAppDelete}
                     onAppUpdate={this.props.onAppUpdate}

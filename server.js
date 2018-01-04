@@ -63,18 +63,18 @@ router.route('/apps')
     })
     //post new app to the database
     .post(function (req, res) {
-        var pwapp = new App();
+        var app = new App();
         //body parser lets us use the req.body
-        (req.body.author) ? pwapp.author = req.body.author : null;
-        (req.body.category) ? pwapp.category = req.body.category : null;
-        // (req.body.dateAdded) ? pwapp.dateAdded = req.body.dateAdded : null;
-        (req.body.description) ?pwapp.description = req.body.description : null;
-        (req.body.icon) ?pwapp.icon = req.body.icon : null;
-        (req.body.link) ?pwapp.link = req.body.link : null;
-        (req.body.name) ?pwapp.name = req.body.name : null;
+        (req.body.author) ? app.author = req.body.author : null;
+        (req.body.category) ? app.category = req.body.category : null;
+        // (req.body.dateAdded) ? app.dateAdded = req.body.dateAdded : null;
+        (req.body.description) ?app.description = req.body.description : null;
+        (req.body.icon) ?app.icon = req.body.icon : null;
+        (req.body.link) ?app.link = req.body.link : null;
+        (req.body.name) ?app.name = req.body.name : null;
 
-        console.log('author: ' + pwapp.author + ' name: ' + pwapp.name);
-        pwapp.save(function (err) {
+        console.log('author: ' + app.author + ' name: ' + app.name);
+        app.save(function (err) {
             if (err)
                 res.send(err);
             res.json({ message: 'App successfully added!' });
@@ -85,19 +85,19 @@ router.route('/apps')
 router.route('/apps/:app_id')
     //The put method gives us the chance to update our app based on the ID passed to the route
     .put(function (req, res) {
-        App.findById(req.params.app_id, function (err, pwapp) {
+        App.findById(req.params.app_id, function (err, app) {
             if (err)
                 res.send(err);
-            //setting the new author and text to whatever was changed. If nothing was changed
+            //setting the new name and description to whatever was changed. If nothing was changed
             // we will not alter the field.
-            (req.body.author) ? pwapp.author = req.body.author : null;
-            (req.body.category) ? pwapp.category = req.body.category : null;
-            // (req.body.dateAdded) ? pwapp.dateAdded = req.body.dateAdded : null;
-            (req.body.description) ? pwapp.description = req.body.description : null;
-            (req.body.icon) ? pwapp.icon = req.body.icon : null;
-            (req.body.link) ? pwapp.link = req.body.link : null;
-            //save pwapp
-            pwapp.save(function (err) {
+            (req.body.author) ? app.author = req.body.author : null;
+            (req.body.category) ? app.category = req.body.category : null;
+            // (req.body.dateAdded) ? app.dateAdded = req.body.dateAdded : null;
+            (req.body.description) ? app.description = req.body.description : null;
+            (req.body.icon) ? app.icon = req.body.icon : null;
+            (req.body.link) ? app.link = req.body.link : null;
+            //save app
+            app.save(function (err) {
                 if (err)
                     res.send(err);
                 res.json({ message: 'App has been updated' });

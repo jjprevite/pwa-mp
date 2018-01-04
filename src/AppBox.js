@@ -29,8 +29,11 @@ class AppBox extends Component {
             });
     }
     handleAppUpdate(id, app) {
-        //sends the app id and new author/description to our api
+        //sends the app id and new name/description to our api
         axios.put(`${this.props.url}/${id}`, app)
+            .then(res => {
+                console.log('App updated');
+            })
             .catch(err => {
                 console.log(err);
             })
